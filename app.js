@@ -1,14 +1,20 @@
+const des = document.getElementById("zone");
+const temp_a = document.querySelector(".temp");
+const type_a = document.querySelector(".type-text");
+
+console.log(des.innerHTML);
+
 window.addEventListener("load", () => {
 	let long;
 	let lat;
 
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition((position) => {
-			console.log(position);
+			// console.log(position);
 
 			long = position.coords.longitude;
 			lat = position.coords.latitude;
-			console.log(long, lat);
+			// console.log(long, lat);
 
 			// const proxy = "https://cors-anywhere.herokuapp.com/";
 
@@ -17,10 +23,21 @@ window.addEventListener("load", () => {
 
 			fetch(api)
 				.then((response) => {
+					// console.log(response);
 					return response.json();
 				})
 				.then((data) => {
 					console.log(data);
+					const temperatue = data.main.temp - 273.15;
+					const temp_feels_like = data.main.feels_like;
+					const define = data.weather[0].main;
+					const time_zone = data.name;
+
+					console.log(temperatue, temp_feels_like, define, time_zone);
+
+					des.innerHTML = time_zone;
+					temp_a.innerHTML = temperatue;
+					type_a.innerHTML = define;
 				});
 		});
 	}
