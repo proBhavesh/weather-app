@@ -2,7 +2,7 @@ const des = document.getElementById("zone");
 const temp_a = document.querySelector(".temp");
 const type_a = document.querySelector(".type-text");
 
-console.log(des.innerHTML);
+// console.log(des.innerHTML);
 
 window.addEventListener("load", () => {
 	let long;
@@ -19,11 +19,11 @@ window.addEventListener("load", () => {
 			// const proxy = "https://cors-anywhere.herokuapp.com/";
 
 			const api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=aae516d8d0d0689378583bab648a1981`;
-			console.log(api);
+			// console.log(api);
 
 			fetch(api)
 				.then((response) => {
-					// console.log(response);
+					console.log(response);
 					return response.json();
 				})
 				.then((data) => {
@@ -32,10 +32,19 @@ window.addEventListener("load", () => {
 					const temp_feels_like = data.main.feels_like;
 					const define = data.weather[0].main;
 					const time_zone = data.name;
+					const country = data.sys.country;
+					const humidity = data.main.humidity;
 
-					console.log(temperatue, temp_feels_like, define, time_zone);
+					console.log(
+						temperatue,
+						temp_feels_like,
+						define,
+						time_zone,
+						country,
+						humidity
+					);
 
-					des.innerHTML = time_zone;
+					des.innerHTML = `${time_zone} ${country}`;
 					temp_a.innerHTML = temperatue;
 					type_a.innerHTML = define;
 				});
