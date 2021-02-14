@@ -12,6 +12,8 @@ body {
 	align-items: center;
 	/*background: linear-gradient(to right top, #4be2e3, #6cdbeb);*/
 	background: linear-gradient(to right, #667db6, #0082c8, #0082c8, #667db6);
+	overflow: hidden;
+	background-repeat: no-repeat;
 }
 
 .all {
