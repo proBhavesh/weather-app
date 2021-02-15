@@ -44,8 +44,8 @@ window.addEventListener("load", () => {
 						humidity
 					);
 
-					des.innerHTML = `${time_zone} ${country}`;
-					temp_a.innerHTML = temperatue;
+					des.innerHTML = `${time_zone} ${country} `;
+					temp_a.innerHTML = `${temperatue}&#186 C`;
 					type_a.innerHTML = define;
 				});
 		});
