@@ -1,6 +1,7 @@
 const des = document.getElementById("zone");
 const temp_a = document.querySelector(".temp");
 const type_a = document.querySelector(".type-text");
+const iconDiv = document.querySelector(".icons");
 
 // console.log(des.innerHTML);
 
@@ -28,7 +29,7 @@ window.addEventListener("load", () => {
 				})
 				.then((data) => {
 					console.log(data);
-					const temperatue = data.main.temp - 273.15;
+					const temperatue = Math.floor(data.main.temp - 273.15);
 					const temp_feels_like = data.main.feels_like;
 					const define = data.weather[0].main;
 					const time_zone = data.name;
@@ -47,6 +48,9 @@ window.addEventListener("load", () => {
 					des.innerHTML = `${time_zone} ${country} `;
 					temp_a.innerHTML = `${temperatue}&#186 C`;
 					type_a.innerHTML = define;
+					iconDiv.innerHTML = `
+<img src = "http://openweathermap.org/img/w/${data.weather[0].icon}.png">
+`;
 				});
 		});
 	}
